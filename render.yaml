@@ -42,6 +42,7 @@ services:
     name: plivo-mini-redis
     plan: free
     maxmemoryPolicy: allkeys-lru
+    ipAllowList: []
 
 # PostgreSQL Database
 databases:
