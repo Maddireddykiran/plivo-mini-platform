@@ -28,7 +28,11 @@ app = FastAPI(title="Plivo Mini Communication Platform", version="1.0.0")
 # CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # React app URL
+    allow_origins=[
+        "http://localhost:3000",  # Local development
+        "https://plivo-mini-platform.vercel.app",  # Vercel deployment
+        "https://*.vercel.app"  # Any Vercel subdomain
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

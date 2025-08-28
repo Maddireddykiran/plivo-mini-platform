@@ -3,7 +3,7 @@ services:
   - type: web
     name: plivo-mini-backend
     env: docker
-    dockerfilePath: ./backend/Dockerfile
+    dockerfilePath: ./backend/Dockerfile.render
     dockerContext: ./backend
     plan: free
     envVars:
@@ -22,20 +22,6 @@ services:
         value: HS256
       - key: ACCESS_TOKEN_EXPIRE_MINUTES
         value: 30
-
-  # Frontend Service
-  - type: web
-    name: plivo-mini-frontend
-    env: docker
-    dockerfilePath: ./frontend/Dockerfile
-    dockerContext: ./frontend
-    plan: free
-    envVars:
-      - key: REACT_APP_API_URL
-        fromService:
-          type: web
-          name: plivo-mini-backend
-          property: host
 
   # Redis Cache
   - type: redis
